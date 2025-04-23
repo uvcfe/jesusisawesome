@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,5 +10,595 @@
 
          
     
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAVER</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", sans-serif;
+        }
+        
+        body {
+            background-color: #f5f6f7;
+            color: #222;
+        }
+        
+        header {
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .menu-icon {
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        
+        .naver-logo {
+            height: 30px;
+            cursor: pointer;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-icon {
+            margin-left: 15px;
+            cursor: pointer;
+        }
+        
+        .search-container {
+            position: relative;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        
+        .search-box {
+            width: 100%;
+            height: 50px;
+            border-radius: 25px;
+            border: 1px solid #03c75a;
+            padding: 0 60px 0 20px;
+            font-size: 16px;
+            outline: none;
+        }
+        
+        .search-button {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .service-menu {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px auto;
+            max-width: 600px;
+            flex-wrap: wrap;
+        }
+        
+        .service-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 60px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: #222;
+        }
+        
+        .service-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #f5f6f7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+        
+        .service-name {
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .promotion-banner {
+            max-width: 600px;
+            margin: 0 auto 20px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .login-box {
+            max-width: 600px;
+            margin: 0 auto 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .login-button {
+            background-color: #03c75a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            width: 100%;
+            font-weight: bold;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+        
+        .news-section {
+            max-width: 600px;
+            margin: 0 auto 20px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .news-header {
+            display: flex;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .news-tab {
+            padding: 10px 15px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        .news-tab.active {
+            color: #03c75a;
+            font-weight: bold;
+            border-bottom: 2px solid #03c75a;
+        }
+        
+        .news-content {
+            padding: 15px;
+        }
+        
+        .news-sources {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .news-source {
+            height: 20px;
+        }
+        
+        .main-content {
+            display: flex;
+            max-width: 1080px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+        
+        .content-left {
+            flex: 7;
+        }
+        
+        .content-right {
+            flex: 3;
+        }
+        
+        .shopping-section, .weather-section, .stock-section, .video-section {
+            background-color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .shopping-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .shopping-item {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .shopping-image {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 5px;
+        }
+        
+        .shopping-title {
+            font-size: 12px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        
+        .weather-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .weather-temp {
+            font-size: 40px;
+            font-weight: bold;
+        }
+        
+        .stock-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .stock-name {
+            font-weight: bold;
+        }
+        
+        .stock-price {
+            font-weight: bold;
+        }
+        
+        .stock-change {
+            color: #f03e3e;
+        }
+        
+        .stock-change.up {
+            color: #f03e3e;
+        }
+        
+        .stock-change.down {
+            color: #228be6;
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            margin-bottom: 10px;
+        }
+        
+        .video-image {
+            width: 100%;
+            border-radius: 8px;
+        }
+        
+        .video-time {
+            position: absolute;
+            right: 5px;
+            bottom: 5px;
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            font-size: 11px;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        
+        .video-title {
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+        
+        .video-channel {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .calendar-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .calendar-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .calendar-rating {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        
+        .calendar-day {
+            text-align: center;
+            font-size: 12px;
+            padding: 5px;
+        }
+        
+        .calendar-day.weekend {
+            color: #f03e3e;
+        }
+        
+        .calendar-day.today {
+            background-color: #03c75a;
+            color: white;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="menu-icon">☰</div>
+            <img src="/api/placeholder/80/30" alt="NAVER" class="naver-logo">
+        </div>
+        <div class="header-right">
+            <div class="header-icon">💬</div>
+            <div class="header-icon">🔔</div>
+            <div class="header-icon">🛒</div>
+        </div>
+    </header>
+
+    <div class="search-container">
+        <input type="text" class="search-box" placeholder="검색어를 입력해 주세요">
+        <button class="search-button">🔍</button>
+    </div>
+
+    <div class="service-menu">
+        <a href="#" class="service-item">
+            <div class="service-icon" style="background-color: #e3f5eb;">🏠</div>
+            <div class="service-name">메일</div>
+        </a>
+        <a href="#" class="service-item">
+            <div class="service-icon" style="background-color: #e8f3ff;">🎮</div>
+            <div class="service-name">카페</div>
+        </a>
+        <a href="#" class="service-item">
+            <div class="service-icon" style="background-color: #e6f8ee;">📝</div>
+            <div class="service-name">블로그</div>
+        </a>
+        <a href="#" class="service-item">
+            <div class="service-icon" style="background-color: #eefbf3;">📚</div>
+            <div class="service-name">스토어</div>
+        </a>
+        <a href="#" class="service-item">
+            <div class="service-icon" style="background-color: #f4f8ff;">🎵</div>
+            <div class="service-name">뉴스</div>
+        </a>
+        <a href="#" class="service-item">
+            <div class="service-icon" style="background-color: #fcf3ff;">📊</div>
+            <div class="service-name">증권</div>
+        </a>
+        <a href="#" class="service-item">
+            <div class="service-icon" style="background-color: #e8f8fb;">🏢</div>
+            <div class="service-name">부동산</div>
+        </a>
+        <a href="#" class="service-item">
+            <div class="service-icon" style="background-color: #fbf8ec;">🚗</div>
+            <div class="service-name">자동차</div>
+        </a>
+        <a href="#" class="service-item">
+            <div class="service-icon" style="background-color: #f0f3fa;">📺</div>
+            <div class="service-name">방송</div>
+        </a>
+        <a href="#" class="service-item">
+            <div class="service-icon" style="background-color: #fff1f5;">🎬</div>
+            <div class="service-name">지식인</div>
+        </a>
+    </div>
+
+    <div class="promotion-banner">
+        <img src="/api/placeholder/600/100" alt="점심 먹고 하다가나 때가 딱 좋아!" style="width: 100%; border-radius: 8px;">
+    </div>
+
+    <div class="login-box">
+        <p>네이버를 더 안전하고 편리하게 이용하세요</p>
+        <button class="login-button">NAVER 로그인</button>
+        <div style="display: flex; justify-content: center; font-size: 12px; color: #666; gap: 15px;">
+            <span>아이디 찾기</span>
+            <span>비밀번호 찾기</span>
+            <span>회원가입</span>
+        </div>
+    </div>
+
+    <div class="news-section">
+        <div class="news-header">
+            <div class="news-tab active">뉴스스탠드</div>
+            <div class="news-tab">언론사편집</div>
+            <div class="news-tab">엔터</div>
+            <div class="news-tab">스포츠</div>
+            <div class="news-tab">경제</div>
+        </div>
+        <div class="news-content">
+            <div class="news-sources">
+                <img src="/api/placeholder/80/25" alt="YTN" class="news-source">
+                <img src="/api/placeholder/80/25" alt="MBC" class="news-source">
+                <img src="/api/placeholder/80/25" alt="한국일보" class="news-source">
+                <img src="/api/placeholder/80/25" alt="JTBC" class="news-source">
+                <img src="/api/placeholder/80/25" alt="서울신문" class="news-source">
+                <img src="/api/placeholder/80/25" alt="조선일보" class="news-source">
+                <img src="/api/placeholder/80/25" alt="동아일보" class="news-source">
+                <img src="/api/placeholder/80/25" alt="중앙일보" class="news-source">
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="content-left">
+            <div class="shopping-section">
+                <h3>쇼핑</h3>
+                <div class="shopping-grid">
+                    <a href="#" class="shopping-item">
+                        <img src="/api/placeholder/150/150" alt="패션 아이템" class="shopping-image">
+                        <p class="shopping-title">클래식한 베스트 MACE ZENMA</p>
+                    </a>
+                    <a href="#" class="shopping-item">
+                        <img src="/api/placeholder/150/150" alt="청바지" class="shopping-image">
+                        <p class="shopping-title">하이웨스트 청바지 악세서리 여성용 바지</p>
+                    </a>
+                    <a href="#" class="shopping-item">
+                        <img src="/api/placeholder/150/150" alt="침구세트" class="shopping-image">
+                        <p class="shopping-title">봄에 어울리는 침구 홈 데코레이션</p>
+                    </a>
+                    <a href="#" class="shopping-item">
+                        <img src="/api/placeholder/150/150" alt="가방" class="shopping-image">
+                        <p class="shopping-title">미니 버킷백 숄더백 크로스백</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="video-section">
+                <h3>컬렉션</h3>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px;">
+                    <div>
+                        <div class="video-thumbnail">
+                            <img src="/api/placeholder/160/120" alt="비디오" class="video-image">
+                        </div>
+                        <p class="video-title">미니 클러치백 만들기</p>
+                        <p class="video-channel">하영</p>
+                    </div>
+                    <div>
+                        <div class="video-thumbnail">
+                            <img src="/api/placeholder/160/120" alt="비디오" class="video-image">
+                        </div>
+                        <p class="video-title">봄철 자켓코디와 소품 코디법</p>
+                        <p class="video-channel">패션스쿨</p>
+                    </div>
+                    <div>
+                        <div class="video-thumbnail">
+                            <img src="/api/placeholder/160/120" alt="비디오" class="video-image">
+                        </div>
+                        <p class="video-title">신상 스니커즈 추천</p>
+                        <p class="video-channel">슈즈매니아</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-right">
+            <div class="video-section">
+                <div class="video-thumbnail">
+                    <img src="/api/placeholder/300/170" alt="비디오" class="video-image">
+                    <div class="video-time">02:31</div>
+                </div>
+                <p class="video-title">오늘 수익 이렇게 모으고 있어요 주식 투자법</p>
+            </div>
+
+            <div class="weather-section">
+                <div class="weather-box">
+                    <div>
+                        <div style="font-size: 14px; margin-bottom: 5px;">날씨</div>
+                        <div class="weather-temp">17°</div>
+                        <div style="font-size: 12px; color: #666;">맑음</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 14px;">🌡️ 16° / 21° / 22°</div>
+                        <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 12px;">
+                            <div>12시</div>
+                            <div>14시</div>
+                            <div>16시</div>
+                            <div>18시</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stock-section">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <span>코스피</span>
+                    <span style="color: #666; font-size: 12px;">04.23 09:24 기준</span>
+                </div>
+                <div class="stock-item">
+                    <span class="stock-name">코스피</span>
+                    <div>
+                        <span class="stock-price">2,512.78</span>
+                        <span class="stock-change up">+13.85 +0.55%</span>
+                    </div>
+                </div>
+                <div class="stock-item">
+                    <span class="stock-name">나스닥</span>
+                    <div>
+                        <span class="stock-price">15,451.31</span>
+                        <span class="stock-change down">-32.400 -0.21%</span>
+                    </div>
+                </div>
+                <div class="stock-item">
+                    <span class="stock-name">S&P 500</span>
+                    <div>
+                        <span class="stock-price">5,070.55</span>
+                        <span class="stock-change up">+178.800 +3.65%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calendar-section">
+                <div class="calendar-header">
+                    <div class="calendar-title">워킹 모드</div>
+                    <div class="calendar-rating">4.23 <span style="font-size: 14px;">점</span></div>
+                </div>
+                <div class="calendar-grid">
+                    <div class="calendar-day weekend">일</div>
+                    <div class="calendar-day">월</div>
+                    <div class="calendar-day">화</div>
+                    <div class="calendar-day">수</div>
+                    <div class="calendar-day">목</div>
+                    <div class="calendar-day">금</div>
+                    <div class="calendar-day weekend">토</div>
+                    
+                    <div class="calendar-day weekend">14</div>
+                    <div class="calendar-day">15</div>
+                    <div class="calendar-day">16</div>
+                    <div class="calendar-day">17</div>
+                    <div class="calendar-day">18</div>
+                    <div class="calendar-day">19</div>
+                    <div class="calendar-day weekend">20</div>
+                    
+                    <div class="calendar-day weekend">21</div>
+                    <div class="calendar-day">22</div>
+                    <div class="calendar-day today">23</div>
+                    <div class="calendar-day">24</div>
+                    <div class="calendar-day">25</div>
+                    <div class="calendar-day">26</div>
+                    <div class="calendar-day weekend">27</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
